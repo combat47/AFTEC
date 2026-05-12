@@ -14,7 +14,7 @@ from pathlib import Path
 
 # Add project root to path (for standalone execution)
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
-from aftec.core.models import SoilSample
+from aftec.core.models import SoilSample  # noqa: E402
 
 DB_PATH = Path(__file__).parent.parent.parent / "aftec.db"
 
