@@ -1,6 +1,7 @@
 from datetime import datetime
 from pydantic import BaseModel, Field
 
+
 class SoilSample(BaseModel):
     sensor_id: str
     temperature_c: float = Field(..., ge=-10, le=60)
