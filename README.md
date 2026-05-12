@@ -1,13 +1,12 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/combat47/AFTEC/main/docs/logo.png?raw=true" width="150" alt="AFTEC Logo"/>
   <h1>🌱 AFTEC – Ai Farming TECHnology</h1>
   <p><strong>Because your soil deserves a brain 🧠 + 🤖</strong></p>
   <p>
-    <a href="#-quick-start">Quick Start</a> •
-    <a href="#-modular-architecture">Architecture</a> •
-    <a href="#-roadmap">Roadmap</a> •
-    <a href="#-contributing">Contributing</a> •
-    <a href="#-license">License</a>
+    <a href="#quick-start">Quick Start</a> •
+    <a href="#modular-architecture">Architecture</a> •
+    <a href="#roadmap">Roadmap</a> •
+    <a href="#contributing">Contributing</a> •
+    <a href="#license">License</a>
   </p>
 </div>
 
