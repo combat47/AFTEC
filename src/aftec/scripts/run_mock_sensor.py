@@ -1,6 +1,11 @@
+#!/usr/bin/env python3
+"""Mock sensor simulator – generates fake temp/pH readings."""
+
 import sys
 import time
-sys.path.insert(0, 'src')  # برای دسترسی به ماژول aftec
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent.parent.parent.parent))
 
 from aftec.ingesters.mock_ingester import MockIngester
 
