@@ -5,7 +5,8 @@ from ..core.models import SoilSample
 
 
 class MockIngester:
-    """Generate realistic random soil data (temp 15-30°C, pH 6.0-7.5) with occasional anomalies."""
+    """Generate realistic random soil data (temp 15-30°C, pH 6.0-7.5)
+    with occasional anomalies."""
 
     def __init__(self, sensor_id="mock_sensor_01"):
         self.sensor_id = sensor_id
