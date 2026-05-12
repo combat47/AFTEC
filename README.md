@@ -10,6 +10,12 @@
   </p>
 </div>
 
+[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
+[![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![GitHub Stars](https://img.shields.io/github/stars/combat47/AFTEC?style=social)](https://github.com/combat47/AFTEC)
+[![GitHub watchers](https://img.shields.io/github/watchers/combat47/AFTEC?style=social&label=Watch&maxAge=2592000)](https://GitHub.com/combat47/AFTEC/watchers/)
+
 AFTEC is a **modular**, **open‑source** AI platform for precision farming.  
 It starts simple: monitor **soil temperature** and **pH** from sensors, detect anomalies, and later predict trends – all while staying clean and expandable.
 
