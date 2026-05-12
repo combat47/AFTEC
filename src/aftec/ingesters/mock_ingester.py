@@ -19,8 +19,5 @@ class MockIngester:
             temp = random.choice([-5, 55])
             ph = random.choice([3.0, 10.0])
         return SoilSample(
-            sensor_id=self.sensor_id,
-            temperature_c=temp,
-            ph=ph,
-            timestamp=datetime.now()
+            sensor_id=self.sensor_id, temperature_c=temp, ph=ph, timestamp=datetime.now()
         )
