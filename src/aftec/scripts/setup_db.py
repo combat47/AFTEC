@@ -56,7 +56,7 @@ def create_tables():
 def drop_tables():
     """Drop all tables (caution: deletes all data)."""
     confirm = input("⚠️  This will delete ALL data. Type 'yes' to continue: ")
-    if confirm.lower() != 'yes':
+    if confirm.lower() != "yes":
         print("Aborted.")
         return
     conn = get_connection()
@@ -78,14 +78,22 @@ def insert_mock_data(num_samples=100):
             sensor_id="mock_sensor_01",
             temperature_c=round(random.uniform(15, 30), 1),
             ph=round(random.uniform(6.0, 7.5), 1),
-            timestamp=timestamp
+            timestamp=timestamp,
         )
-        cursor.execute("""
+        cursor.execute(
+            """
             INSERT INTO soil_samples
             (sensor_id, temperature_c, ph, timestamp, is_anomaly)
             VALUES (?, ?, ?, ?, ?)
-        """, (sample.sensor_id, sample.temperature_c, sample.ph,
-              sample.timestamp.isoformat(), 0))
+        """,
+            (
+                sample.sensor_id,
+                sample.temperature_c,
+                sample.ph,
+                sample.timestamp.isoformat(),
+                0,
+            ),
+        )
     conn.commit()
     conn.close()
     print(f"✓ Inserted {num_samples} mock samples.")
@@ -98,8 +106,7 @@ def show_stats():
     cursor.execute("SELECT COUNT(*) as total FROM soil_samples")
     total = cursor.fetchone()["total"]
     cursor.execute(
-        "SELECT MIN(timestamp) as oldest, MAX(timestamp) as newest "
-        "FROM soil_samples"
+        "SELECT MIN(timestamp) as oldest, MAX(timestamp) as newest " "FROM soil_samples"
     )
     row = cursor.fetchone()
     oldest = row["oldest"]
@@ -112,13 +119,15 @@ def show_stats():
 def main():
     """Parse arguments and run database setup."""
     parser = argparse.ArgumentParser(description="AFTEC database setup tool")
-    parser.add_argument("--drop", action="store_true",
-                        help="Drop existing tables")
-    parser.add_argument("--mock", type=int, nargs="?", const=100,
-                        help="Insert mock data (optional number of samples, "
-                             "default 100)")
-    parser.add_argument("--stats", action="store_true",
-                        help="Show database statistics")
+    parser.add_argument("--drop", action="store_true", help="Drop existing tables")
+    parser.add_argument(
+        "--mock",
+        type=int,
+        nargs="?",
+        const=100,
+        help="Insert mock data (optional number of samples, " "default 100)",
+    )
+    parser.add_argument("--stats", action="store_true", help="Show database statistics")
     args = parser.parse_args()
 
     if args.drop:
