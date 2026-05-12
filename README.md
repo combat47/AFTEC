@@ -2,11 +2,11 @@
   <h1>🌱 AFTEC – Ai Farming TECHnology</h1>
   <p><strong>Because your soil deserves a brain 🧠 + 🤖</strong></p>
   <p>
-    <a href="#-quick-start">Quick Start</a> •
-    <a href="#-modular-architecture">Architecture</a> •
-    <a href="#-roadmap">Roadmap</a> •
-    <a href="#-contributing">Contributing</a> •
-    <a href="#-license">License</a>
+    <a href="https://github.com/combat47/AFTEC/edit/main/README.md#-quick-start-do-it-in-2-minutes">Quick Start</a> •
+    <a href="https://github.com/combat47/AFTEC/blob/main/README.md#-modular-architecture-like-pokad-but-farming">Architecture</a> •
+    <a href="https://github.com/combat47/AFTEC/blob/main/README.md#%EF%B8%8F-roadmap-transparent-no-bullshit">Roadmap</a> •
+    <a href="https://github.com/combat47/AFTEC/blob/main/README.md#-contributing-yes-you"-contributing">Contributing</a> •
+    <a href="https://github.com/combat47/AFTEC/blob/main/README.md#-license">License</a>
   </p>
 </div>
 
