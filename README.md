@@ -2,11 +2,11 @@
   <h1>🌱 AFTEC – Ai Farming TECHnology</h1>
   <p><strong>Because your soil deserves a brain 🧠 + 🤖</strong></p>
   <p>
-    <a href="#quick-start">Quick Start</a> •
-    <a href="#modular-architecture">Architecture</a> •
-    <a href="#roadmap">Roadmap</a> •
-    <a href="#contributing">Contributing</a> •
-    <a href="#license">License</a>
+    <a href="#-quick-start">Quick Start</a> •
+    <a href="#-modular-architecture">Architecture</a> •
+    <a href="#-roadmap">Roadmap</a> •
+    <a href="#-contributing">Contributing</a> •
+    <a href="#-license">License</a>
   </p>
 </div>
 
@@ -29,6 +29,7 @@ Think of it as POKAD but for agriculture. 🏡→🌾
 ---
 
 ## 🧱 Modular Architecture (like POKAD, but farming)
+```text
 AFTEC/
 ├── src/aftec/
 │ ├── core/ # data models & abstract base classes
@@ -39,8 +40,7 @@ AFTEC/
 ├── scripts/ # run mock sensor, run ingester
 ├── tests/ # pytest unit tests
 └── docs/ # detailed docs (mkdocs later)
-
-text
+```
 
 **Current scope (MVP):**  
 - Mock sensor (generates realistic temp/pH with occasional anomalies)  
@@ -74,21 +74,25 @@ make run-ingester
 Anomalies (e.g., pH 3.0 or temp 55°C) will be flagged.
 
 🛠️ Makefile commands (save your brain)
-Command	What it does
-make install	install deps + package in editable mode
-make run-sim	run mock sensor (prints fake data)
-make run-ingester	main loop: read from mock sensor → store → detect anomalies
-make test	run all tests with pytest
-make clean	remove cache files
-🧪 Example output (ingester)
-text
+
+| Command	| What it does |
+|---------|---------|
+| make install	| install deps + package in editable mode |
+| make run-sim	| run mock sensor (prints fake data) |
+| make run-ingester	| main loop: read from mock sensor → store → detect anomalies |
+| make test	| run all tests with pytest |
+| make clean	| remove cache files |
+
+## 🧪 Example output (ingester)
+```text
 [2025-05-12 14:32:01] sensor=mock_01 | temp=22.3°C | pH=6.8 | anomaly=False
 [2025-05-12 14:32:03] sensor=mock_01 | temp=23.1°C | pH=7.0 | anomaly=False
 [2025-05-12 14:32:05] sensor=mock_01 | temp=55.0°C | pH=3.2 | anomaly=True ⚠️
+```
 Anomaly detection currently uses IQR on a sliding window of last 100 readings.
 Simple, explainable, and easy to replace later.
 
-🗺️ Roadmap (transparent, no bullshit)
+## 🗺️ Roadmap (transparent, no bullshit)
 Phase 0 – Project structure, mock sensor, base classes
 
 Phase 1 – SQLite storage + IQR anomaly detector + unit tests
@@ -105,7 +109,7 @@ Phase 6 – Docker + docker‑compose, cloud deployment template
 
 Each phase is a separate milestone with its own branch and release.
 
-🤝 Contributing (yes, you!)
+## 🤝 Contributing (yes, you!)
 You want to help? Awesome.
 
 Fork, create a feature branch, open a PR.
@@ -119,7 +123,7 @@ Use make test before pushing.
 We also welcome real‑world sensor configs (e.g., how to connect a specific pH meter).
 Share your setup in docs/hardware/.
 
-💰 Monetization? (because open source should not mean starving)
+## 💰 Monetization? (because open source should not mean starving)
 This repo is MIT licensed – free forever.
 But if you want to make money:
 
@@ -131,10 +135,10 @@ White‑label – sell a branded version to agritech companies.
 
 All using the same core code. I'll keep the core open, you build business on top.
 
-📄 License
+## 📄 License
 Apache 2.0 © [Amirhossein Jahazi] – do whatever you want, but keep the original copyright, disclaimer, and note any changes.
 
-⭐ Show your support
+## ⭐ Show your support
 If AFTEC helps you or makes you smile, star this repo 🌟 and share it with a farmer or a dev friend.
 
 Made with ☕, Python, and a dream of smarter fields.
