@@ -5,23 +5,26 @@ Creates tables and indexes for storing soil samples.
 Can optionally populate with mock data for testing.
 """
 
+import argparse
+import random
 import sqlite3
 import sys
-from pathlib import Path
 from datetime import datetime, timedelta
-import random
+from pathlib import Path
 
 # Add project root to path (for standalone execution)
-sys.path.insert(0, str(Path(__file__).parent.parent))
-from src.aftec.core.models import SoilSample
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+from aftec.core.models import SoilSample
 
-DB_PATH = Path(__file__).parent.parent / "aftec.db"
+DB_PATH = Path(__file__).parent.parent.parent / "aftec.db"
+
 
 def get_connection():
     """Return a connection to the SQLite database."""
     conn = sqlite3.connect(str(DB_PATH))
-    conn.row_factory = sqlite3.Row  # access columns by name
+    conn.row_factory = sqlite3.Row
     return conn
+
 
 def create_tables():
     """Create the soil_samples table if it doesn't exist."""
@@ -38,16 +41,17 @@ def create_tables():
         )
     """)
     cursor.execute("""
-        CREATE INDEX IF NOT EXISTS idx_timestamp 
+        CREATE INDEX IF NOT EXISTS idx_timestamp
         ON soil_samples(timestamp DESC)
     """)
     cursor.execute("""
-        CREATE INDEX IF NOT EXISTS idx_sensor_id 
+        CREATE INDEX IF NOT EXISTS idx_sensor_id
         ON soil_samples(sensor_id)
     """)
     conn.commit()
     conn.close()
     print("✓ Tables created/indexed.")
+
 
 def drop_tables():
     """Drop all tables (caution: deletes all data)."""
@@ -62,13 +66,13 @@ def drop_tables():
     conn.close()
     print("✓ Tables dropped.")
 
+
 def insert_mock_data(num_samples=100):
-    """Insert random realistic samples for the last N hours."""
+    """Insert random realistic samples for the last N minutes."""
     conn = get_connection()
     cursor = conn.cursor()
     now = datetime.now()
     for i in range(num_samples):
-        # simulate time going backwards
         timestamp = now - timedelta(minutes=i * 5)
         sample = SoilSample(
             sensor_id="mock_sensor_01",
@@ -77,13 +81,15 @@ def insert_mock_data(num_samples=100):
             timestamp=timestamp
         )
         cursor.execute("""
-            INSERT INTO soil_samples (sensor_id, temperature_c, ph, timestamp, is_anomaly)
+            INSERT INTO soil_samples
+            (sensor_id, temperature_c, ph, timestamp, is_anomaly)
             VALUES (?, ?, ?, ?, ?)
-        """, (sample.sensor_id, sample.temperature_c, sample.ph, 
+        """, (sample.sensor_id, sample.temperature_c, sample.ph,
               sample.timestamp.isoformat(), 0))
     conn.commit()
     conn.close()
     print(f"✓ Inserted {num_samples} mock samples.")
+
 
 def show_stats():
     """Print basic statistics from the database."""
@@ -91,7 +97,10 @@ def show_stats():
     cursor = conn.cursor()
     cursor.execute("SELECT COUNT(*) as total FROM soil_samples")
     total = cursor.fetchone()["total"]
-    cursor.execute("SELECT MIN(timestamp) as oldest, MAX(timestamp) as newest FROM soil_samples")
+    cursor.execute(
+        "SELECT MIN(timestamp) as oldest, MAX(timestamp) as newest "
+        "FROM soil_samples"
+    )
     row = cursor.fetchone()
     oldest = row["oldest"]
     newest = row["newest"]
@@ -99,13 +108,17 @@ def show_stats():
     print(f"Date range: {oldest} → {newest}")
     conn.close()
 
+
 def main():
-    import argparse
+    """Parse arguments and run database setup."""
     parser = argparse.ArgumentParser(description="AFTEC database setup tool")
-    parser.add_argument("--drop", action="store_true", help="Drop existing tables")
-    parser.add_argument("--mock", type=int, nargs="?", const=100, 
-                        help="Insert mock data (optional number of samples, default 100)")
-    parser.add_argument("--stats", action="store_true", help="Show database statistics")
+    parser.add_argument("--drop", action="store_true",
+                        help="Drop existing tables")
+    parser.add_argument("--mock", type=int, nargs="?", const=100,
+                        help="Insert mock data (optional number of samples, "
+                             "default 100)")
+    parser.add_argument("--stats", action="store_true",
+                        help="Show database statistics")
     args = parser.parse_args()
 
     if args.drop:
@@ -120,9 +133,9 @@ def main():
         show_stats()
 
     if not any([args.drop, args.mock, args.stats]):
-        # default behaviour: just ensure tables exist and print stats
         create_tables()
         show_stats()
+
 
 if __name__ == "__main__":
     main()
