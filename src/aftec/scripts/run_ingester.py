@@ -8,7 +8,7 @@ from pathlib import Path
 # Add project root to path for local development
 sys.path.insert(0, str(Path(__file__).parent.parent.parent.parent))
 
-from aftec.ingesters.mock_ingester import MockIngester
+from aftec.ingesters.mock_ingester import MockIngester  # noqa: E402
 
 
 def main():
