@@ -87,3 +87,39 @@ git clone https://github.com/combat47/AFTEC.git
 cd AFTEC
 make install
 make test   # verify everything works
+```
+
+You can then run the mock sensor and ingester:
+
+```bash
+make run-sim      # terminal 1
+make run-ingester # terminal 2
+```
+
+## 🧹 Style Guidelines
+- Python: Follow PEP 8.
+
+- Line length: max 99 characters.
+
+- Docstrings: Use Google style (we’ll add a linter later).
+
+- Naming: snake_case for functions/variables, CamelCase for classes.
+
+- Type hints: Strongly encouraged for all function arguments and return values.
+
+We will soon add `black`, `isort`, and `flake8` to the CI pipeline.
+
+## 🤝 Getting Help
+- Open a GitHub Discussion for questions or ideas.
+
+- Tag your issue with question if you’re unsure.
+
+- You can also reach out via [your email or social media].
+
+## 💰 Financial Contributions
+AFTEC is open‑source and not currently accepting donations. If you’d like to sponsor development, please contact us directly. We may set up GitHub Sponsors in the future.
+
+## 📜 License
+By contributing, you agree that your contributions will be licensed under the MIT License (same as the project).
+
+Thank you for helping make AFTEC better – for developers, for farmers, for the planet. 🌍
