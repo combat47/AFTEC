@@ -16,10 +16,7 @@ def main():
     print("Mock Sensor Running (Ctrl+C to stop)")
     while True:
         sample = ingester.read()
-        print(
-            f"[{sample.timestamp}] Temp:{sample.temperature_c}°C  "
-            f"pH:{sample.ph}"
-        )
+        print(f"[{sample.timestamp}] Temp:{sample.temperature_c}°C  " f"pH:{sample.ph}")
         time.sleep(2)
 
 
